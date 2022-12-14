@@ -1,0 +1,32 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<form action="./resgister" method="post">
+    <h2>Login</h2>
+    <div class="input-field">
+        <input type="text" name="izena" id="izena" placeholder="Enter izena">
+    </div>
+    <div class="input-field">
+        <input type="text" name="abizena" id="abizena" placeholder="Enter abizena">
+    </div>
+    <div class="input-field">
+        <input type="text" name="email" id="email" placeholder="Enter email helbidea">
+    </div>
+    <div class="input-field">
+        <input type="password" name="pasahitza" id="psahitza" placeholder="Enter pasahitza">
+    </div>
+    <input type="submit" value="Register">
+    <%if(errors!=null){%>
+        <ul>
+            <% errors.forEach((error)=>{
+            %>
+                <li><%= error.msg %></li>
+            <%
+            }) %>
+        </ul>
+    <%}%>
+</form>
+</body>
+</html>

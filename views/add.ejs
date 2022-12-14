@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<form action="./createPlayer" method="post">
+<form action="./add" method="post">
     <h2>Create Player</h2>
     <div class="input-field">
         <input type="text" name="name" id="name" placeholder="Enter name">
@@ -27,6 +27,15 @@
         <input type="text" name="leagueId" id="leagueId" placeholder="Enter leagueId">
     </div>
     <input type="submit" value="create">
+    <%if(errors!=null){%>
+        <ul>
+            <% errors.forEach((error)=>{
+                %>
+                <li><%= error.msg %></li>
+                <%
+            }) %>
+        </ul>
+    <%}%>
 </form>
 </body>
 </html>

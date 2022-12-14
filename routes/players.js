@@ -1,6 +1,25 @@
 var express = require('express');
 const {body, validationResult }= require("express-validator");
+const mongojs = require('mongojs')
+const db = mongojs('mongodb://127.0.0.1:27017/footballdata', ['players'])
 var router = express.Router();
+
+
+
+let remove = function(res, id, redirect=false){
+
+    db.players.remove({id:parseInt(id)}, (err, result) => {
+        if (err) {
+            res.send(err);
+        } else {
+            console.log(result)
+            res.redirect('/api/players');
+        }
+    });
+
+
+}
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -23,7 +42,9 @@ router.post('/add',
 
     let errors = validationResult(req);
 
+
         var newPlayer = {
+            //id: newplayerid(),
             name: req.body.name,
             birthdate: req.body.birthdate,
             nationality: req.body.nationality,
@@ -35,8 +56,15 @@ router.post('/add',
     if(errors.errors.length > 0){
         res.render('add', { errors: errors.array() });
     }else{
-        console.log(newPlayer);
-        res.render('add', { errors: null });
+        //console.log(newPlayer);
+       // res.render('add', { errors: null });
+        db.players.insert(newPlayer,(err, result) => {
+            if (err) {
+                res.send(err)
+            } else {
+                res.redirect('/add')
+            }
+        })
     }
 
 });
@@ -49,6 +77,24 @@ router.get('/ID', function(req, res, next) {
         }
     })
 });
+router.get('/:id', function(req, res, next) {
+    db.players.findOne({id:parseInt(req.params.id)},(err, docs) => {
+        if (err) {
+            res.send(err);
+        } else if (docs == null){
+            res.send('Player not found');
+        }else {
+            res.render('showPlayers', {elements: [docs]})
+        }
+    })
+});
+router.get('/remove/:id', (req, res,next) => {
+    //console.log(req.params.id);
+    remove(res, req.params.id)
+    //findPlayer( res,req.params.id)
+})
+
+
 
 
 

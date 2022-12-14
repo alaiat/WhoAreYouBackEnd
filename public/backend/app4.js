@@ -11,7 +11,7 @@ try {
     let idx=0
     let interval = setInterval(() => {
         let elem=data[idx]
-        const url = `https://media.api-sports.io/football/players/${elem.replace(/[^\w ]/g, '')}.png`
+        const url = `https://playfootball.games/media/players/${parseInt(elem.replace(/[^\w ]/g, ''))%32}/${elem.replace(/[^\w ]/g, '')}.png`
         console.log(url)
         fetch(url)
             .then(res => {

@@ -1,0 +1,13 @@
+"Welcome User <a href=\logout>click to logout</a>"
+<%if(admin){%>
+    <br>
+    "Here are your options:"
+    <br>
+    <ul>
+        <li>Add a new player: api/players/add</li>
+        <li>View all players: api/players/ID</li>
+        <li>View a certain player: api/players/ID --> the ID of the player</li>
+        <li>Edit a player: api/players/edit</li>
+        <li>Remove a player: api/players/remove</li>
+    </ul>
+<%}%>

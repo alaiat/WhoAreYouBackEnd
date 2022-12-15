@@ -13,7 +13,7 @@ let remove = function(res, id, redirect=false){
             res.send(err);
         } else {
             console.log(result)
-            res.redirect('/api/players');
+            res.redirect('/login');
         }
     });
 
@@ -27,7 +27,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/add', function(req, res, next) {
-  res.render('add', { errors: null });
+    if(req.session.admin){
+        res.render('add', { errors: null });
+    }else{
+        res.send("You need to be an admin to add a player");
+    }
 });
 
 router.post('/add',
@@ -69,29 +73,42 @@ router.post('/add',
 
 });
 router.get('/ID', function(req, res, next) {
-    db.players.find((err, docs) => {
-        if (err) {
-            res.send(err);
-        } else {
-            res.render('showPlayers', {elements: docs})
-        }
-    })
+    if(req.session.admin){
+        db.players.find((err, docs) => {
+            if (err) {
+                res.send(err);
+            } else {
+                res.render('showPlayers', {elements: docs})
+            }
+        })
+    }else{
+        res.send("You need to be an admin to see all players");
+    }
+
 });
 router.get('/:id', function(req, res, next) {
-    db.players.findOne({id:parseInt(req.params.id)},(err, docs) => {
-        if (err) {
-            res.send(err);
-        } else if (docs == null){
-            res.send('Player not found');
-        }else {
-            res.render('showPlayers', {elements: [docs]})
-        }
-    })
+    if(req.session.admin){
+        db.players.findOne({id:parseInt(req.params.id)},(err, docs) => {
+            if (err) {
+                res.send(err);
+            } else if (docs == null){
+                res.send('Player not found');
+            }else {
+                res.render('showPlayers', {elements: [docs]})
+            }
+        })
+    }else{
+        res.send("You need to be an admin to see a player");
+    }
+
 });
 router.get('/remove/:id', (req, res,next) => {
-    //console.log(req.params.id);
-    remove(res, req.params.id)
-    //findPlayer( res,req.params.id)
+    if(req.session.admin){
+        remove(res, req.params.id)
+    }else{
+        res.send("You need to be an admin to remove a player");
+    }
+
 })
 
 

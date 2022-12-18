@@ -28,10 +28,19 @@ router.get('/', function(req, res, next) {
 
 router.get('/add', function(req, res, next) {
    // if(req.session.admin){
+
         res.render('add', { errors: null });
     //}else{
     //    res.send("You need to be an admin to add a player");
     //}
+});
+
+router.get('/edit', function(req, res, next) {
+   // if(req.session.admin){
+        res.render('edit', { errors: null });
+   // }else{
+        res.send("You need to be an admin to edit a player");
+   // }
 });
 
 router.post('/add',
@@ -45,10 +54,10 @@ router.post('/add',
     async function(req, res, next) {
 
     let errors = validationResult(req);
-        let newid =  await newplayerid();
+        let newid = await newplayerid();
         console.log(newid + " newid");
         var newPlayer = {
-            id: parseFloat(newid),
+            id: parseInt(newid),
             name: req.body.name,
             birthdate: req.body.birthdate,
             nationality: req.body.nationality,
@@ -57,20 +66,19 @@ router.post('/add',
             number: req.body.number,
             leagueId: req.body.leagueId
         }
-    if(errors.errors.length > 0){
+    /*if(errors.errors.length > 0){
         res.render('add', { errors: errors.array() });
-    }else{
-        //console.log(newPlayer);
-       // res.render('add', { errors: null });
+    }else{*/
+
+
         db.players.insert(newPlayer,(err, result) => {
             if (err) {
                 res.send(err)
             } else {
-
-                res.redirect('/api/players/add')
+                res.render('add', {newplayerid: newid, errors: null});
             }
         })
-    }
+    //}
 
 });
 router.get('/ID', function(req, res, next) {
@@ -115,13 +123,7 @@ router.get('/remove/:id', (req, res,next) => {
 
 })
 
-router.get('/edit', function(req, res, next) {
-    if(req.session.admin){
-        res.render('edit', { errors: null });
-    }else{
-        res.send("You need to be an admin to edit a player");
-    }
-});
+
 
 router.put('/edit',
     body('id').notEmpty().withMessage('id can not be empty').isNumeric().withMessage('id must be a number'),
@@ -162,20 +164,19 @@ router.put('/edit',
 
 });
 
-    async function newplayerid(){
-            let randomNumber = Math.floor(Math.random() * 1000000) + 1;
-            db.players.findOne({id:randomNumber},(err, docs) => {
-                if (err) {
-                    res.send(err);
-                } else if (docs == null){
-                    console.log(randomNumber + " random");
-                    return randomNumber;
-                } else {
-                    newplayerid();
-                }
-            })
-
+async function newplayerid() {
+    let randomNumber = Math.floor(Math.random() * 1000000) + 1;
+    let docs = await db.players.findOne({ id: randomNumber });
+    if (docs == null) {
+        console.log(randomNumber + " random");
+        return randomNumber;
+    } else {
+        console.log(randomNumber + "repetido");
+        return newplayerid();
     }
+}
+
+
 
 
 

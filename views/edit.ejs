@@ -1,0 +1,88 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Player</title>
+</head>
+<body>
+<h1>Edit Player</h1>
+
+<form>
+    <h2>Player ID</h2>
+    <label for="id">ID:</label><br>
+    <input type="number" id="id" name="id" required><br>
+
+    <h2>Player new data</h2>
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="birthdate">Birthdate:</label><br>
+    <input type="text" id="birthdate" name="birthdate"  required><br>
+
+    <label for="nationality">Nationality:</label><br>
+    <input type="text" id="nationality" name="nationality" required><br>
+
+    <label for="teamId">Team ID:</label><br>
+    <input type="number" id="teamId" name="teamId" required><br>
+
+    <label for="position">Position:</label><br>
+    <input type="text" id="position" name="position" required><br>
+
+    <label for="number">Number:</label><br>
+    <input type="number" id="number" name="number" required><br>
+
+    <label for="leagueId">League ID:</label><br>
+    <input type="number" id="leagueId" name="leagueId" required><br>
+    <br>
+    <button type="button" onclick="editPlayer()">Edit player</button>
+</form>
+
+<ul id="errors"></ul>
+
+<script>
+    async function editPlayer() {
+        const id = document.getElementById('id').value;
+        const name = document.getElementById('name').value;
+        const birthdate = document.getElementById('birthdate').value;
+        const nationality = document.getElementById('nationality').value;
+        const teamId = document.getElementById('teamId').value;
+        const position = document.getElementById('position').value;
+        const number = document.getElementById('number').value;
+        const leagueId = document.getElementById('leagueId').value;
+
+        const response = await fetch('/api/players/edit', {
+            method: 'put',
+            body: JSON.stringify({
+                id: id,
+                name: name,
+                birthdate: birthdate,
+                nationality: nationality,
+                teamId: teamId,
+                position: position,
+                number: number,
+                leagueId: leagueId
+            }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (response.ok) {
+            console.log('Player edited successfully!');
+
+        } else {
+            const errors = await response.json();
+            const errorsList = document.getElementById('errors');
+            errorsList.innerHTML = '';
+            errors.forEach(error => {
+                const li = document.createElement('li');
+                li.innerHTML = error;
+                errorsList.appendChild(li);
+            });
+        }
+    }
+</script>
+</body>
+</html>

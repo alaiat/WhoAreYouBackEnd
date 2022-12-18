@@ -27,11 +27,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/add', function(req, res, next) {
-    if(req.session.admin){
+   // if(req.session.admin){
         res.render('add', { errors: null });
-    }else{
-        res.send("You need to be an admin to add a player");
-    }
+    //}else{
+    //    res.send("You need to be an admin to add a player");
+    //}
 });
 
 router.post('/add',
@@ -42,13 +42,13 @@ router.post('/add',
     body('position').notEmpty().withMessage('position can not be empty').isIn(['DF', 'MF', 'FW', 'GK','df','mf','fw','gk']).withMessage('position must be DF, MF, FW or GK'),
     body('number').notEmpty().withMessage('number can not be empty').isNumeric().withMessage('number must be a number'),
     body('leagueId').notEmpty().withMessage('leagueId can not be empty').isNumeric().withMessage('leagueId must be a number'),
-    function(req, res, next) {
+    async function(req, res, next) {
 
     let errors = validationResult(req);
-
-
+        let newid =  await newplayerid();
+        console.log(newid + " newid");
         var newPlayer = {
-            //id: newplayerid(),
+            id: parseFloat(newid),
             name: req.body.name,
             birthdate: req.body.birthdate,
             nationality: req.body.nationality,
@@ -66,7 +66,8 @@ router.post('/add',
             if (err) {
                 res.send(err)
             } else {
-                res.redirect('/add')
+
+                res.redirect('/api/players/add')
             }
         })
     }
@@ -86,7 +87,7 @@ router.get('/ID', function(req, res, next) {
     }
 
 });
-/*
+
 router.get('/:id', function(req, res, next) {
     if(req.session.admin){
         db.players.findOne({id:parseInt(req.params.id)},(err, docs) => {
@@ -102,7 +103,7 @@ router.get('/:id', function(req, res, next) {
         res.send("You need to be an admin to see a player");
     }
 
-});*/
+});
 
 
 router.get('/remove/:id', (req, res,next) => {
@@ -115,11 +116,11 @@ router.get('/remove/:id', (req, res,next) => {
 })
 
 router.get('/edit', function(req, res, next) {
-    //if(req.session.admin){
+    if(req.session.admin){
         res.render('edit', { errors: null });
-    //}else{
-     //   res.send("You need to be an admin to add a player");
-    //}
+    }else{
+        res.send("You need to be an admin to edit a player");
+    }
 });
 
 router.put('/edit',
@@ -154,14 +155,27 @@ router.put('/edit',
                     res.send(err+"aa")
                 } else {
                     console.log(result + "resultado");
-                    res.redirect('http://localhost:3000/api/players/edit' );
+                    res.redirect('./api/players/edit' );
                 }
             })
         }
 
-    });
+});
 
+    async function newplayerid(){
+            let randomNumber = Math.floor(Math.random() * 1000000) + 1;
+            db.players.findOne({id:randomNumber},(err, docs) => {
+                if (err) {
+                    res.send(err);
+                } else if (docs == null){
+                    console.log(randomNumber + " random");
+                    return randomNumber;
+                } else {
+                    newplayerid();
+                }
+            })
 
+    }
 
 
 

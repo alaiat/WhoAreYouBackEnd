@@ -46,9 +46,6 @@
 <form action="./add" method="post">
     <h2>Create Player</h2>
     <div class="input-field">
-        <input type="text" name="id" id="id" placeholder="Enter id">
-    </div>
-    <div class="input-field">
         <input type="text" name="name" id="name" placeholder="Enter name">
     </div>
     <div class="input-field">
@@ -82,7 +79,7 @@
     <%if(add!=null){ %>
         <br>
         <br>
-        <span class="label success"><%= add%></span>
+        <span class="label success">New player created with the id: <%= add%></span>
     <%}%>
 
 

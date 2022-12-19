@@ -45,7 +45,6 @@ router.get('/edit', function(req, res, next) {
 });
 
 router.post('/add',
-    body('id').isNumeric().withMessage('Id must be a number'),
     body('name').notEmpty().withMessage('name can not be empty'),
     body('birthdate').notEmpty().withMessage('birthdate can`t be empty').isDate({format: 'YYYY-MM-DD'}).withMessage('birthdate must be a date'),
     body('nationality').notEmpty().withMessage('nationality can not be empty'),
@@ -56,9 +55,10 @@ router.post('/add',
     async function(req, res, next) {
 
     let errors = validationResult(req);
+    let newId=await newplayerid();
 
         var newPlayer = {
-            id: req.body.id,
+            id: parseInt(newId),
             name: req.body.name,
             birthdate: req.body.birthdate,
             nationality: req.body.nationality,
@@ -76,7 +76,7 @@ router.post('/add',
             if (err) {
                 res.send(err)
             } else {
-                res.render('add', {add: "New player created", errors: null});
+                res.render('add', {add: newId, errors: null});
             }
         })
     }

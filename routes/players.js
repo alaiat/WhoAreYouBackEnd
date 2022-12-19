@@ -19,7 +19,7 @@ let remove = function(res, id, redirect=false){
             res.render('remove')
         }
     });
-
+//
 
 }
 

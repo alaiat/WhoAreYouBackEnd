@@ -3,6 +3,7 @@ const {body, validationResult }= require("express-validator");
 const mongojs = require('mongojs')
 const path= require("path");
 const db = mongojs('mongodb://127.0.0.1:27017/footballdata', ['players'])
+const multer = require('multer');
 var router = express.Router();
 
 
@@ -22,7 +23,27 @@ let remove = function(res, id, redirect=false){
 
 }
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './backend/public/images/players');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+    }
+});
 
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg') {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+};
+
+const upload = multer({
+    storage: storage,
+    fileFilter: fileFilter
+});
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.redirect('/login');
@@ -52,6 +73,7 @@ router.post('/add',
     body('position').notEmpty().withMessage('position can not be empty').isIn(['DF', 'MF', 'FW', 'GK','df','mf','fw','gk']).withMessage('position must be DF, MF, FW or GK'),
     body('number').notEmpty().withMessage('number can not be empty').isNumeric().withMessage('number must be a number'),
     body('leagueId').notEmpty().withMessage('leagueId can not be empty').isNumeric().withMessage('leagueId must be a number'),
+    upload.single('image'),
     async function(req, res, next) {
 
     let errors = validationResult(req);

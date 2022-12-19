@@ -50,7 +50,7 @@ function autocomplete(inp, game) {
                     /*close the list of autocompleted values,
                     (or any other open lists of autocompleted values:*/
                     closeAllLists();
-
+//
                     /* YOUR CODE HERE */
                     let id=players.filter(p=>p.name==inp.value).map(p=>p.id)[0];
                    // console.log(id)

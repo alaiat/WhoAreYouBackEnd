@@ -25,7 +25,7 @@ let remove = function(res, id, redirect=false){
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './backend/public/images/players');
+        cb(null, './backend/json/players');
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname);
@@ -33,7 +33,7 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-    if (file.mimetype === 'image/jpeg') {
+    if (file.mimetype === 'image/jpg') {
         cb(null, true);
     } else {
         cb(null, false);
@@ -93,7 +93,7 @@ router.post('/add',
         res.render('add', { add: null, errors: errors.array() });
     }else{
         createPlayer(newPlayer, 1).then((id) => {
-            console.log(id + "dentro");
+
             res.render('add', { add: id, errors: null });
         }).catch((err) => {
             console.error(err);
@@ -206,7 +206,6 @@ function createPlayer(player, id) {
                     if (err) {
                         reject(err);
                     } else {
-                        console.log(player.id + " id");
                         resolve(player.id);
                     }
                 });
@@ -219,27 +218,7 @@ function createPlayer(player, id) {
 
 
 
-/*
-    function createPlayer(player,id){
-    db.players.findOne({id:id},(err, docs) => {
-      if(err){
-        console.log(err);
-        }else if(docs){
-          createPlayer(player,id+1)
-      }else{
-          player.id=id;
-          db.players.insert(player,(err, result) => {
-            if (err) {
-                console.log(err)
-            }
-          })
-          console.log(player.id + " id");
-          return player.id;
-      }
-    })
-    return player.id;
-}
-*/
+
 
 
 

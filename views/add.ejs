@@ -43,7 +43,7 @@
     </style>
 </head>
 <body>
-<form action="./add" method="post">
+<form action="./add" method="post" enctype="multipart/form-data">
     <h2>Create Player</h2>
     <div class="input-field">
         <input type="text" name="name" id="name" placeholder="Enter name">
@@ -67,7 +67,7 @@
         <input type="text" name="leagueId" id="leagueId" placeholder="Enter leagueId">
     </div>
     <div class="input-field">
-        <input type="file" accept="image/jpeg" id="image">
+        <input type="file" name="image" id="image">
     </div>
     <input type="submit" value="create">
     <%if(errors!=null){%>

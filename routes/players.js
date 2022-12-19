@@ -37,11 +37,11 @@ router.get('/add', function(req, res, next) {
 });
 
 router.get('/edit', function(req, res, next) {
-    //if(req.session.admin){
+    if(req.session.admin){
         res.render('edit', { errors: null });
-    //}else{
+    }else{
         res.send("You need to be an admin to edit a player");
-    //}
+    }
 });
 
 router.post('/add',

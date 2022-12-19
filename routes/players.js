@@ -70,9 +70,14 @@ router.post('/add',
     if(errors.errors.length > 0){
         res.render('add', { add: null, errors: errors.array() });
     }else{
-        let id=createPlayer(newPlayer,0);
+        createPlayer(newPlayer, 1).then((id) => {
+            console.log(id + "dentro");
+            res.render('add', { add: id, errors: null });
+        }).catch((err) => {
+            console.error(err);
+        });
 
-        res.render('add', { add: id, errors: null });
+
 
 
     }
@@ -188,7 +193,34 @@ router.get('/player/:id', function(req, res, next){
     res.sendFile(src);
 })
 
-function createPlayer(player,id){
+function createPlayer(player, id) {
+    return new Promise((resolve, reject) => {
+        db.players.findOne({ id: id }, (err, docs) => {
+            if (err) {
+                reject(err);
+            } else if (docs) {
+                createPlayer(player, id + 1).then(resolve).catch(reject);
+            } else {
+                player.id = id;
+                db.players.insert(player, (err, result) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        console.log(player.id + " id");
+                        resolve(player.id);
+                    }
+                });
+            }
+        });
+    });
+}
+
+
+
+
+
+/*
+    function createPlayer(player,id){
     db.players.findOne({id:id},(err, docs) => {
       if(err){
         console.log(err);
@@ -201,11 +233,13 @@ function createPlayer(player,id){
                 console.log(err)
             }
           })
+          console.log(player.id + " id");
+          return player.id;
       }
     })
-    return id
+    return player.id;
 }
-
+*/
 
 
 module.exports = router;

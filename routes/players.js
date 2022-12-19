@@ -55,10 +55,10 @@ router.post('/add',
     async function(req, res, next) {
 
     let errors = validationResult(req);
-    let newId=await newplayerid();
+    //let newId=await newplayerid();
 
         var newPlayer = {
-            id: parseInt(newId),
+            id: null,
             name: req.body.name,
             birthdate: req.body.birthdate,
             nationality: req.body.nationality,
@@ -70,15 +70,11 @@ router.post('/add',
     if(errors.errors.length > 0){
         res.render('add', { add: null, errors: errors.array() });
     }else{
+        let id=createPlayer(newPlayer,0);
+
+        res.render('add', { add: id, errors: null });
 
 
-        db.players.insert(newPlayer,(err, result) => {
-            if (err) {
-                res.send(err)
-            } else {
-                res.render('add', {add: newId, errors: null});
-            }
-        })
     }
 
 });
@@ -192,7 +188,23 @@ router.get('/player/:id', function(req, res, next){
     res.sendFile(src);
 })
 
-
+function createPlayer(player,id){
+    db.players.findOne({id:id},(err, docs) => {
+      if(err){
+        console.log(err);
+        }else if(docs){
+          createPlayer(player,id+1)
+      }else{
+          player.id=id;
+          db.players.insert(player,(err, result) => {
+            if (err) {
+                console.log(err)
+            }
+          })
+      }
+    })
+    return id
+}
 
 
 

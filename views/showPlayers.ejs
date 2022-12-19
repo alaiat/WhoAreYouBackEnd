@@ -28,9 +28,8 @@
             <td> <%= element.position %></td>
             <td> <%= element.number %></td>
             <td> <%= element.leagueId %></td>
-            <td> <a href="./edit/<%= element._id %>">Edit</a></td>
+            <td> <a href="./edit<%= element._id %>">Edit</a></td>
             <td> <a href="./remove/<%= element.id %>">Delete</a></td>
         </tr>
     <% }) %>
 </table>
-<a href="./add" class=" btn btn-primary">Add New Item</a>

@@ -170,28 +170,6 @@ async function newplayerid() {
     }
 }
 
-router.get('/team/:id', function(req, res, next){
-    let teamId = req.params.id;
-    let src = "C:/Users/alaia/OneDrive/Documentos/alaia/uni-infor/3/ws/workspace-intelli/WhoAreYouBackEnd/public/backend/json/teamIDs/" + teamId + ".png";
-    res.sendFile(src);
-})
-
-router.get('/nationality/:nation', function(req, res, next){
-    let nation = req.params.nation;
-    let src = "C:/Users/alaia/OneDrive/Documentos/alaia/uni-infor/3/ws/workspace-intelli/WhoAreYouBackEnd/public/backend/json/nationalities/" + nation + ".svg";
-    res.sendFile(src);
-})
-
-router.get('/league/:id', function(req, res, next){
-    let leagueId = req.params.id;
-    let src = "C:/Users/alaia/OneDrive/Documentos/alaia/uni-infor/3/ws/workspace-intelli/WhoAreYouBackEnd/public/backend/json/leagues/" + leagueId + ".png";
-    res.sendFile(src);
-})
-router.get('/player/:id', function(req, res, next){
-    let playerId = req.params.id;
-    let src = "C:/Users/alaia/OneDrive/Documentos/alaia/uni-infor/3/ws/workspace-intelli/WhoAreYouBackEnd/public/backend/json/players/" + playerId + ".png";
-    res.sendFile(src);
-})
 
 function createPlayer(player, id) {
     return new Promise((resolve, reject) => {
@@ -240,6 +218,35 @@ function createPlayer(player, id) {
     return player.id;
 }
 */
+
+
+
+
+
+
+router.get('/team/:id', function(req, res, next){
+    let teamId = req.params.id;
+    //let src = "C:/Users/alaia/OneDrive/Documentos/alaia/uni-infor/3/ws/workspace-intelli/WhoAreYouBackEnd/public/backend/json/teamIDs/" + teamId + ".png";
+    let src=path.join(__dirname.replace("routes",""),`public/backend/json/teamIDs/${teamId}.png`);
+    res.sendFile(src);
+})
+
+router.get('/nationality/:nation', function(req, res, next){
+    let nation = req.params.nation;
+    let src = path.join(__dirname.replace("routes",""),`public/backend/json/nationalities/${nation}.svg`);
+    res.sendFile(src);
+})
+
+router.get('/league/:id', function(req, res, next){
+    let leagueId = req.params.id;
+    let src = path.join(__dirname.replace("routes",""),`public/backend/json/leagues/${leagueId}.png`);
+    res.sendFile(src);
+})
+router.get('/player/:id', function(req, res, next){
+    let playerId = req.params.id;
+    let src = path.join(__dirname.replace("routes",""),`public/backend/json/players/${playerId}.png`);
+    res.sendFile(src);
+})
 
 
 module.exports = router;

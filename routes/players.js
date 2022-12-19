@@ -14,7 +14,8 @@ let remove = function(res, id, redirect=false){
             res.send(err);
         } else {
             console.log(result)
-            res.redirect('/login');
+            //res.redirect('/login');
+            res.render('remove')
         }
     });
 

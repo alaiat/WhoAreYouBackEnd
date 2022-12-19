@@ -23,27 +23,27 @@ let remove = function(res, id, redirect=false){
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.redirect('/login');
 });
 
 router.get('/add', function(req, res, next) {
-   // if(req.session.admin){
-
-        res.render('add', { errors: null });
-    //}else{
-    //    res.send("You need to be an admin to add a player");
-    //}
+    if(req.session.admin){
+        res.render('add', { add:null, errors: null });
+    }else {
+        res.send("You need to be an admin to add a player");
+    }
 });
 
 router.get('/edit', function(req, res, next) {
-   // if(req.session.admin){
+    //if(req.session.admin){
         res.render('edit', { errors: null });
-   // }else{
+    //}else{
         res.send("You need to be an admin to edit a player");
-   // }
+    //}
 });
 
 router.post('/add',
+    body('id').isNumeric().withMessage('Id must be a number'),
     body('name').notEmpty().withMessage('name can not be empty'),
     body('birthdate').notEmpty().withMessage('birthdate can`t be empty').isDate({format: 'YYYY-MM-DD'}).withMessage('birthdate must be a date'),
     body('nationality').notEmpty().withMessage('nationality can not be empty'),
@@ -54,10 +54,9 @@ router.post('/add',
     async function(req, res, next) {
 
     let errors = validationResult(req);
-        let newid = await newplayerid();
-        console.log(newid + " newid");
+
         var newPlayer = {
-            id: parseInt(newid),
+            id: req.body.id,
             name: req.body.name,
             birthdate: req.body.birthdate,
             nationality: req.body.nationality,
@@ -66,19 +65,19 @@ router.post('/add',
             number: req.body.number,
             leagueId: req.body.leagueId
         }
-    /*if(errors.errors.length > 0){
-        res.render('add', { errors: errors.array() });
-    }else{*/
+    if(errors.errors.length > 0){
+        res.render('add', { add: null, errors: errors.array() });
+    }else{
 
 
         db.players.insert(newPlayer,(err, result) => {
             if (err) {
                 res.send(err)
             } else {
-                res.render('add', {newplayerid: newid, errors: null});
+                res.render('add', {add: "New player created", errors: null});
             }
         })
-    //}
+    }
 
 });
 router.get('/ID', function(req, res, next) {
@@ -126,20 +125,12 @@ router.get('/remove/:id', (req, res,next) => {
 
 
 router.put('/edit',
-    body('id').notEmpty().withMessage('id can not be empty').isNumeric().withMessage('id must be a number'),
-    body('name').notEmpty().withMessage('name can not be empty'),
-    body('birthdate').notEmpty().withMessage('birthdate can`t be empty').isDate({format: 'YYYY-MM-DD'}).withMessage('birthdate must be a date'),
-    body('nationality').notEmpty().withMessage('nationality can not be empty'),
-    body('teamId').notEmpty().withMessage('teamId can not be empty').isNumeric().withMessage('teamId must be a number'),
-    body('position').notEmpty().withMessage('position can not be empty').isIn(['DF', 'MF', 'FW', 'GK','df','mf','fw','gk']).withMessage('position must be DF, MF, FW or GK'),
-    body('number').notEmpty().withMessage('number can not be empty').isNumeric().withMessage('number must be a number'),
-    body('leagueId').notEmpty().withMessage('leagueId can not be empty').isNumeric().withMessage('leagueId must be a number'),
     function(req, res, next){
-        let errors = validationResult(req);
-
+       // let errors = validationResult(req);
+/*
         if(errors.errors.length > 0){
             res.render('edit', { errors: errors.array() });
-        }else{
+        }else{*/
             db.players.findAndModify({
                 query: {id: parseInt(req.body.id)},
                 update: {$set:  {
@@ -160,7 +151,7 @@ router.put('/edit',
                     res.redirect('./api/players/edit' );
                 }
             })
-        }
+        //}
 
 });
 
@@ -175,6 +166,29 @@ async function newplayerid() {
         return newplayerid();
     }
 }
+
+router.get('/team/:id', function(req, res, next){
+    let teamId = req.params.id;
+    let src = "C:/Users/alaia/OneDrive/Documentos/alaia/uni-infor/3/ws/workspace-intelli/WhoAreYouBackEnd/public/backend/json/teamIDs/" + teamId + ".png";
+    res.sendFile(src);
+})
+
+router.get('/nationality/:nation', function(req, res, next){
+    let nation = req.params.nation;
+    let src = "C:/Users/alaia/OneDrive/Documentos/alaia/uni-infor/3/ws/workspace-intelli/WhoAreYouBackEnd/public/backend/json/nationalities/" + nation + ".svg";
+    res.sendFile(src);
+})
+
+router.get('/league/:id', function(req, res, next){
+    let leagueId = req.params.id;
+    let src = "C:/Users/alaia/OneDrive/Documentos/alaia/uni-infor/3/ws/workspace-intelli/WhoAreYouBackEnd/public/backend/json/leagues/" + leagueId + ".png";
+    res.sendFile(src);
+})
+router.get('/player/:id', function(req, res, next){
+    let playerId = req.params.id;
+    let src = "C:/Users/alaia/OneDrive/Documentos/alaia/uni-infor/3/ws/workspace-intelli/WhoAreYouBackEnd/public/backend/json/players/" + playerId + ".png";
+    res.sendFile(src);
+})
 
 
 

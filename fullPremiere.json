@@ -1,0 +1,122 @@
+[
+  {
+    "teamId": 19,
+    "teamName": "Arsenal",
+    "leagueId": 8,
+    "newId": 42
+  },
+  {
+    "teamId": 9,
+    "teamName": "Manchester City",
+    "leagueId": 8,
+    "newId": 50
+  },
+  {
+    "teamId": 6,
+    "teamName": "Tottenham Hotspur",
+    "leagueId": 8,
+    "newId": 47
+  },
+  {
+    "teamId": 78,
+    "teamName": "Brighton & Hove Albion",
+    "leagueId": 8,
+    "newId": 51
+  },
+  {
+    "teamId": 14,
+    "teamName": "Manchester United",
+    "leagueId": 8,
+    "newId": 33
+  },
+  {
+    "teamId": 8,
+    "teamName": "Liverpool",
+    "leagueId": 8,
+    "newId": 40
+  },
+  {
+    "teamId": 71,
+    "teamName": "Leeds United",
+    "leagueId": 8,
+    "newId": 63
+  },
+  {
+    "teamId": 11,
+    "teamName": "Fulham",
+    "leagueId": 8,
+    "newId": 36
+  },
+  {
+    "teamId": 65,
+    "teamName": "Southampton",
+    "leagueId": 8,
+    "newId": 41
+  },
+  {
+    "teamId": 18,
+    "teamName": "Chelsea",
+    "leagueId": 8,
+    "newId": 49
+  },
+  {
+    "teamId": 236,
+    "teamName": "Brentford",
+    "leagueId": 8,
+    "newId": 55
+  },
+  {
+    "teamId": 20,
+    "teamName": "Newcastle United",
+    "leagueId": 8,
+    "newId": 34
+  },
+  {
+    "teamId": 51,
+    "teamName": "Crystal Palace",
+    "leagueId": 8,
+    "newId": 52
+  },
+  {
+    "teamId": 1,
+    "teamName": "West Ham United",
+    "leagueId": 8,
+    "newId": 48
+  },
+  {
+    "teamId": 63,
+    "teamName": "Nottingham Forest",
+    "leagueId": 8,
+    "newId": 65
+  },
+  {
+    "teamId": 52,
+    "teamName": "AFC Bournemouth",
+    "leagueId": 8,
+    "newId": 35
+  },
+  {
+    "teamId": 13,
+    "teamName": "Everton",
+    "leagueId": 8,
+    "newId": 45
+  },
+  {
+    "teamId": 29,
+    "teamName": "Wolverhampton Wanderers",
+    "leagueId": 8,
+    "newId": 39
+  },
+  {
+    "teamId": 15,
+    "teamName": "Aston Villa",
+    "leagueId": 8,
+    "newId": 66
+  },
+  {
+    "teamId": 42,
+    "teamName": "Leicester City",
+    "leagueId": 8,
+    "newId": 46
+  }
+]

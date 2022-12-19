@@ -169,11 +169,11 @@ let setupRows = function (game) {
     function setContent(guess) {
         return [
             //pais
-            `<img src="https://torre.eus/backend/json/nationalities/${guess.nationality}.svg" alt="" style="width: 60%;">`,
+            `<img src="http://localhost:3000/api/players/nationality/${guess.nationality}" alt="" style="width: 60%;">`,
             //liga
-            `<img src="https://torre.eus/backend/json/leagues/${leagueToFlag(guess.leagueId)}.png" alt="" style="width: 60%;">`,
+            `<img src="http://localhost:3000/api/players/league/${leagueToFlag(guess.leagueId)}" alt="" style="width: 60%;">`,
             //equipo
-            `<img src="https://torre.eus/backend/json/teamIDs/${guess.teamId}.png" alt="" style="width: 60%;">`,
+            `<img src="http://localhost:3000/api/players/team/${guess.teamId}" alt="" style="width: 60%;">`,
             //posicion
             `${guess.position}`,
             //edad

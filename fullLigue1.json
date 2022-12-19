@@ -1,0 +1,122 @@
+[
+  {
+    "teamId": 591,
+    "teamName": "Paris Saint Germain",
+    "leagueId": 301,
+    "newId": 85
+  },
+  {
+    "teamId": 271,
+    "teamName": "Lens",
+    "leagueId": 301,
+    "newId": 116
+  },
+  {
+    "teamId": 44,
+    "teamName": "Olympique Marseille",
+    "leagueId": 301,
+    "newId": 81
+  },
+  {
+    "teamId": 79,
+    "teamName": "Olympique Lyonnais",
+    "leagueId": 301,
+    "newId": 80
+  },
+  {
+    "teamId": 581,
+    "teamName": "Montpellier",
+    "leagueId": 301,
+    "newId": 82
+  },
+  {
+    "teamId": 598,
+    "teamName": "Rennes",
+    "leagueId": 301,
+    "newId": 94
+  },
+  {
+    "teamId": 9257,
+    "teamName": "Lorient",
+    "leagueId": 301,
+    "newId": 97
+  },
+  {
+    "teamId": 690,
+    "teamName": "Lille",
+    "leagueId": 301,
+    "newId": 79
+  },
+  {
+    "teamId": 3682,
+    "teamName": "Auxerre",
+    "leagueId": 301,
+    "newId": 108
+  },
+  {
+    "teamId": 59,
+    "teamName": "Nantes",
+    "leagueId": 301,
+    "newId": 83
+  },
+  {
+    "teamId": 7047,
+    "teamName": "Troyes",
+    "leagueId": 301,
+    "newId": 110
+  },
+  {
+    "teamId": 6898,
+    "teamName": "Clermont",
+    "leagueId": 301,
+    "newId": 99
+  },
+  {
+    "teamId": 289,
+    "teamName": "Toulouse",
+    "leagueId": 301,
+    "newId": 96
+  },
+  {
+    "teamId": 1028,
+    "teamName": "Reims",
+    "leagueId": 301,
+    "newId": 93
+  },
+  {
+    "teamId": 450,
+    "teamName": "Nice",
+    "leagueId": 301,
+    "newId": 84
+  },
+  {
+    "teamId": 6789,
+    "teamName": "Monaco",
+    "leagueId": 301,
+    "newId": 91
+  },
+  {
+    "teamId": 266,
+    "teamName": "Brest",
+    "leagueId": 301,
+    "newId": 106
+  },
+  {
+    "teamId": 686,
+    "teamName": "Strasbourg",
+    "leagueId": 301,
+    "newId": 95
+  },
+  {
+    "teamId": 776,
+    "teamName": "Angers SCO",
+    "leagueId": 301,
+    "newId": 77
+  },
+  {
+    "teamId": 524,
+    "teamName": "Ajaccio",
+    "leagueId": 301,
+    "newId": 98
+  }
+]

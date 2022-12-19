@@ -1,0 +1,122 @@
+[
+  {
+    "teamId": 708,
+    "teamName": "Atalanta",
+    "leagueId": 384,
+    "newId": 499
+  },
+  {
+    "teamId": 37,
+    "teamName": "Roma",
+    "leagueId": 384,
+    "newId": 497
+  },
+  {
+    "teamId": 2930,
+    "teamName": "Inter",
+    "leagueId": 384,
+    "newId": 505
+  },
+  {
+    "teamId": 597,
+    "teamName": "Napoli",
+    "leagueId": 384,
+    "newId": 492
+  },
+  {
+    "teamId": 625,
+    "teamName": "Juventus",
+    "leagueId": 384,
+    "newId": 496
+  },
+  {
+    "teamId": 113,
+    "teamName": "Milan",
+    "leagueId": 384,
+    "newId": 489
+  },
+  {
+    "teamId": 43,
+    "teamName": "Lazio",
+    "leagueId": 384,
+    "newId": 487
+  },
+  {
+    "teamId": 613,
+    "teamName": "Torino",
+    "leagueId": 384,
+    "newId": 503
+  },
+  {
+    "teamId": 346,
+    "teamName": "Udinese",
+    "leagueId": 384,
+    "newId": 494
+  },
+  {
+    "teamId": 7743,
+    "teamName": "Salernitana",
+    "leagueId": 384,
+    "newId": 514
+  },
+  {
+    "teamId": 109,
+    "teamName": "Fiorentina",
+    "leagueId": 384,
+    "newId": 502
+  },
+  {
+    "teamId": 2714,
+    "teamName": "Sassuolo",
+    "leagueId": 384,
+    "newId": 488
+  },
+  {
+    "teamId": 345,
+    "teamName": "Spezia",
+    "leagueId": 384,
+    "newId": 515
+  },
+  {
+    "teamId": 397,
+    "teamName": "Empoli",
+    "leagueId": 384,
+    "newId": 511
+  },
+  {
+    "teamId": 7790,
+    "teamName": "Lecce",
+    "leagueId": 384,
+    "newId": 867
+  },
+  {
+    "teamId": 8513,
+    "teamName": "Bologna",
+    "leagueId": 384,
+    "newId": 500
+  },
+  {
+    "teamId": 1123,
+    "teamName": "Hellas Verona",
+    "leagueId": 384,
+    "newId": 504
+  },
+  {
+    "teamId": 522,
+    "teamName": "Sampdoria",
+    "leagueId": 384,
+    "newId": 498
+  },
+  {
+    "teamId": 10722,
+    "teamName": "Cremonese",
+    "leagueId": 384,
+    "newId": 520
+  },
+  {
+    "teamId": 1628,
+    "teamName": "Monza",
+    "leagueId": 384,
+    "newId": 1579
+  }
+]

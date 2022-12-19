@@ -1,0 +1,122 @@
+[
+  {
+    "teamId": 3468,
+    "teamName": "Real Madrid",
+    "leagueId": 564,
+    "newId": 541
+  },
+  {
+    "teamId": 485,
+    "teamName": "Real Betis",
+    "leagueId": 564,
+    "newId": 543
+  },
+  {
+    "teamId": 83,
+    "teamName": "FC Barcelona",
+    "leagueId": 564,
+    "newId": 529
+  },
+  {
+    "teamId": 13258,
+    "teamName": "Athletic Club",
+    "leagueId": 564,
+    "newId": 531
+  },
+  {
+    "teamId": 3477,
+    "teamName": "Villarreal",
+    "leagueId": 564,
+    "newId": 533
+  },
+  {
+    "teamId": 7980,
+    "teamName": "Atlético Madrid",
+    "leagueId": 564,
+    "newId": 530
+  },
+  {
+    "teamId": 459,
+    "teamName": "Osasuna",
+    "leagueId": 564,
+    "newId": 727
+  },
+  {
+    "teamId": 594,
+    "teamName": "Real Sociedad",
+    "leagueId": 564,
+    "newId": 548
+  },
+  {
+    "teamId": 645,
+    "teamName": "Mallorca",
+    "leagueId": 564,
+    "newId": 798
+  },
+  {
+    "teamId": 618,
+    "teamName": "Almería",
+    "leagueId": 564,
+    "newId": 723
+  },
+  {
+    "teamId": 377,
+    "teamName": "Rayo Vallecano",
+    "leagueId": 564,
+    "newId": 728
+  },
+  {
+    "teamId": 36,
+    "teamName": "Celta de Vigo",
+    "leagueId": 564,
+    "newId": 538
+  },
+  {
+    "teamId": 231,
+    "teamName": "Girona",
+    "leagueId": 564,
+    "newId": 547
+  },
+  {
+    "teamId": 214,
+    "teamName": "Valencia",
+    "leagueId": 564,
+    "newId": 532
+  },
+  {
+    "teamId": 676,
+    "teamName": "Sevilla",
+    "leagueId": 564,
+    "newId": 536
+  },
+  {
+    "teamId": 528,
+    "teamName": "Espanyol",
+    "leagueId": 564,
+    "newId": 540
+  },
+  {
+    "teamId": 1099,
+    "teamName": "Elche",
+    "leagueId": 564,
+    "newId": 797
+  },
+  {
+    "teamId": 106,
+    "teamName": "Getafe",
+    "leagueId": 564,
+    "newId": 546
+  },
+  {
+    "teamId": 361,
+    "teamName": "Real Valladolid",
+    "leagueId": 564,
+    "newId": 720
+  },
+  {
+    "teamId": 6827,
+    "teamName": "Cádiz",
+    "leagueId": 564,
+    "newId": 724
+  }
+]

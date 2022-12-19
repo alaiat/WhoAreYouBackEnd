@@ -58,7 +58,8 @@ Promise.all([fetchJSON("fullplayers"), fetchJSON("solution")]).then(
 
 
     document.getElementById("mistery")
-        .src = `https://torre.eus/backend/json/players/${game.solution.id}.png`;
+        .src = `http://localhost:3000/api/players/player/${game.solution.id}`;
+    //333670
 
 
 

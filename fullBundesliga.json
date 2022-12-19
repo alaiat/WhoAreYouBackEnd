@@ -1,0 +1,110 @@
+[
+  {
+    "teamId": 503,
+    "teamName": "FC Bayern München",
+    "leagueId": 82,
+    "newId": 157
+  },
+  {
+    "teamId": 1079,
+    "teamName": "FC Union Berlin",
+    "leagueId": 82,
+    "newId": 182
+  },
+  {
+    "teamId": 3543,
+    "teamName": "SC Freiburg",
+    "leagueId": 82,
+    "newId": 160
+  },
+  {
+    "teamId": 2726,
+    "teamName": "TSG Hoffenheim",
+    "leagueId": 82,
+    "newId": 167
+  },
+  {
+    "teamId": 68,
+    "teamName": "Borussia Dortmund",
+    "leagueId": 82,
+    "newId": 165
+  },
+  {
+    "teamId": 683,
+    "teamName": "Borussia Mönchengladbach",
+    "leagueId": 82,
+    "newId": 163
+  },
+  {
+    "teamId": 794,
+    "teamName": "FSV Mainz 05",
+    "leagueId": 82,
+    "newId": 164
+  },
+  {
+    "teamId": 3320,
+    "teamName": "FC Köln",
+    "leagueId": 82,
+    "newId": 192
+  },
+  {
+    "teamId": 277,
+    "teamName": "RB Leipzig",
+    "leagueId": 82,
+    "newId": 173
+  },
+  {
+    "teamId": 82,
+    "teamName": "Werder Bremen",
+    "leagueId": 82,
+    "newId": 162
+  },
+  {
+    "teamId": 366,
+    "teamName": "Eintracht Frankfurt",
+    "leagueId": 82,
+    "newId": 169
+  },
+  {
+    "teamId": 3319,
+    "teamName": "VfB Stuttgart",
+    "leagueId": 82,
+    "newId": 172
+  },
+  {
+    "teamId": 3321,
+    "teamName": "Bayer 04 Leverkusen",
+    "leagueId": 82,
+    "newId": 168
+  },
+  {
+    "teamId": 90,
+    "teamName": "FC Augsburg",
+    "leagueId": 82,
+    "newId": 170
+  },
+  {
+    "teamId": 510,
+    "teamName": "VfL Wolfsburg",
+    "leagueId": 82,
+    "newId": 161
+  },
+  {
+    "teamId": 67,
+    "teamName": "Schalke 04",
+    "leagueId": 82,
+    "newId": 174
+  },
+  {
+    "teamId": 3317,
+    "teamName": "Hertha BSC",
+    "leagueId": 82,
+    "newId": 159
+  },
+  {
+    "teamId": 999,
+    "teamName": "VfL Bochum 1848",
+    "leagueId": 82,
+    "newId": 176
+  }
+]

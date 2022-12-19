@@ -7,11 +7,7 @@ const mongojs = require('mongojs')
 const db = mongojs('mongodb://127.0.0.1:27017/footballdata', ['teams'])
 const db2 = mongojs('mongodb://127.0.0.1:27017/footballdata', ['fullLaLiga'])
 const db3 = mongojs('mongodb://127.0.0.1:27017/footballdata', ['leagues'])
-const db2 = mongojs('mongodb://127.0.0.1:27017/footballdata', ['fullLaLiga'])
-const db2 = mongojs('mongodb://127.0.0.1:27017/footballdata', ['fullLaLiga'])
-const db2 = mongojs('mongodb://127.0.0.1:27017/footballdata', ['fullLaLiga'])
-const db2 = mongojs('mongodb://127.0.0.1:27017/footballdata', ['fullLaLiga'])
-const db2 = mongojs('mongodb://127.0.0.1:27017/footballdata', ['fullLaLiga'])
+
 
 const options = {
         method: 'GET',
@@ -72,68 +68,21 @@ async function getBig5Teams() {
         request(option, function (error, response, body) {
             if (error) throw new Error(error);
             let league= JSON.parse(body).response;
-           console.log(league[0].league)
            db.leagues.insert(league[0].league, (err, result) => {
                 if (err) {
                     console.log(err);
                 } else {
-                    //console.log(result)
+                    console.log(result)
                 }
             })
 
 
-            option.url=`https://api-football-v1.p.rapidapi.com/v3/teams?league=${leagueId}&season=${league[0].seasons.pop().year}`
-            request(option, function (error, response, body) {
-                if (error) throw new Error(error);
-                let teams= JSON.parse(body).response;
-                console.log(teams)
-                let zein
-                switch (leagueId) {
-                    case 140:
-                        zein=fullLaLiga
-                        break
-                    case 39:
-                        zein=fullPremierLeague
-                        break
-                    case 135:
-                        zein=fullSerieA
-                        break
-                    case 61:
-                        zein=fullLigue1
-                        break
-                    case 78:
-                        zein=fullBundesliga
-                        break
-                }
-
-            })
 
 
 
 
 
-            db2.LaLiga.find((err, docs) => {
-                if (err) {
-                    res.send(err);
-                } else {
-                    let teams
-                    docs.map((doc) => {
-                        teams=laLigaTeams.map((team) => {
-                            if(doc.newId === team.team.id){
-                                team.team.id = doc.teamId;
-                            }
-                        })
-                    })
-                    db.teams.insert(teams, (err, result) => {
-                        if (err) {
-                            console.log(err);
-                        } else {
-                            console.log(result)
-                        }
-                    })
 
-                }
-            })
 
         });
 
